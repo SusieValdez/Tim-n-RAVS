@@ -131,6 +131,5 @@ anims/RunRight = SubResource( 7 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 27
-frame = 21
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]

@@ -8,6 +8,7 @@ onready var sprite = $Sprite
 
 var velocity = Vector2(0,0)
 var can_jump = false
+var num_jumps = 0
 var direction = "Right"
 
 func _physics_process(_delta):
@@ -21,12 +22,14 @@ func _physics_process(_delta):
 		velocity.x = 0
 
 	velocity.y = velocity.y + GRAVITY
+
 	if is_on_floor():
-		can_jump = true
-	if not is_on_floor() and $JumpTimer.is_stopped():
+		num_jumps = 0
+	if not is_on_floor() and num_jumps == 0:
 		$JumpTimer.start()
-	if can_jump and Input.is_action_just_pressed("jump"):
+	if num_jumps < 2 and Input.is_action_just_pressed("jump"):
 		velocity.y = JUMPFORCE
+		num_jumps += 1
 		
 	if is_on_floor():
 		if velocity.x == 0:
@@ -40,4 +43,4 @@ func _physics_process(_delta):
 	velocity.x = lerp(velocity.x, 0, 0.2)
 
 func _on_JumpTimer_timeout():
-	can_jump = false
+	num_jumps += 1
