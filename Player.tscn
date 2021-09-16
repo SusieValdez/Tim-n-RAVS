@@ -71,7 +71,7 @@ tracks/0/keys = {
 "values": [ 19 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -125,12 +125,12 @@ anims/IdleLeft = SubResource( 2 )
 anims/IdleRight = SubResource( 3 )
 anims/JumpLeft = SubResource( 4 )
 anims/JumpRight = SubResource( 5 )
-anims/RunLeft = SubResource( 7 )
-anims/RunRight = SubResource( 8 )
+anims/RunLeft = SubResource( 6 )
+anims/RunRight = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 27
-frame = 22
+frame = 21
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
