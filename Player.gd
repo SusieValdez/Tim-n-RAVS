@@ -6,6 +6,8 @@ const JUMPFORCE = -700
 
 onready var sprite = $Sprite
 
+const MAX_NUM_JUMPS = 2
+
 var velocity = Vector2(0,0)
 var can_jump = false
 var num_jumps = 0
@@ -27,7 +29,7 @@ func _physics_process(_delta):
 		num_jumps = 0
 	if not is_on_floor() and num_jumps == 0:
 		$JumpTimer.start()
-	if num_jumps < 2 and Input.is_action_just_pressed("jump"):
+	if num_jumps < MAX_NUM_JUMPS and Input.is_action_just_pressed("jump"):
 		velocity.y = JUMPFORCE
 		num_jumps += 1
 		
@@ -37,7 +39,10 @@ func _physics_process(_delta):
 		else:
 			$AnimationPlayer.play("Run" + direction)
 	else:
-		$AnimationPlayer.play("Jump" + direction)
+		if num_jumps == 1:
+			$AnimationPlayer.play("Jump" + direction)
+		elif num_jumps == 2:
+			$AnimationPlayer.play("Roll" + direction)
 
 	velocity = move_and_slide(velocity, Vector2.UP)
 	velocity.x = lerp(velocity.x, 0, 0.2)

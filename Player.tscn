@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/player.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
@@ -71,6 +71,38 @@ tracks/0/keys = {
 "values": [ 19 ]
 }
 
+[sub_resource type="Animation" id=9]
+resource_name = "RollLeft"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 27, 28, 29, 30, 31 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "RollRight"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 22, 23, 24, 25, 26 ]
+}
+
 [sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
@@ -125,11 +157,14 @@ anims/IdleLeft = SubResource( 2 )
 anims/IdleRight = SubResource( 3 )
 anims/JumpLeft = SubResource( 4 )
 anims/JumpRight = SubResource( 5 )
+anims/RollLeft = SubResource( 9 )
+anims/RollRight = SubResource( 8 )
 anims/RunLeft = SubResource( 6 )
 anims/RunRight = SubResource( 7 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-hframes = 27
+hframes = 33
+frame = 31
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
