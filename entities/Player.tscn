@@ -116,7 +116,7 @@ tracks/0/keys = {
 "values": [ 42, 43, 44, 45, 46 ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=9]
 resource_name = "RollRight"
 length = 0.5
 tracks/0/type = "value"
@@ -132,7 +132,7 @@ tracks/0/keys = {
 "values": [ 36, 37, 38, 39, 40 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -148,7 +148,7 @@ tracks/0/keys = {
 "values": [ 18, 19, 20, 21, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=11]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -164,7 +164,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15, 16, 17 ]
 }
 
-[sub_resource type="Animation" id=11]
+[sub_resource type="Animation" id=12]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -179,7 +179,7 @@ tracks/0/keys = {
 "values": [ 54 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=13]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -219,11 +219,11 @@ anims/IdleRight = SubResource( 5 )
 anims/JumpLeft = SubResource( 6 )
 anims/JumpRight = SubResource( 7 )
 anims/RollLeft = SubResource( 8 )
-anims/RollRight = SubResource( 13 )
-anims/RunLeft = SubResource( 9 )
-anims/RunRight = SubResource( 10 )
-anims/WallSlideLeft = SubResource( 11 )
-anims/WallSlideRight = SubResource( 12 )
+anims/RollRight = SubResource( 9 )
+anims/RunLeft = SubResource( 10 )
+anims/RunRight = SubResource( 11 )
+anims/WallSlideLeft = SubResource( 12 )
+anims/WallSlideRight = SubResource( 13 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
