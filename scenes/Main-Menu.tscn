@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Breakfast Noodles DEMO.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/Breakfast Noodles DEMO.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/main-menu.png" type="Texture" id=2]
-[ext_resource path="res://Main-Menu.gd" type="Script" id=3]
+[ext_resource path="res://scenes/Main-Menu.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 150
@@ -28,10 +28,10 @@ __meta__ = {
 texture = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 902.0
-margin_top = 777.0
-margin_right = 1891.0
-margin_bottom = 975.0
+margin_left = -47.0
+margin_top = 172.0
+margin_right = 942.0
+margin_bottom = 370.0
 custom_fonts/font = SubResource( 1 )
 text = "TiM n' R.A.V.S."
 __meta__ = {
@@ -39,10 +39,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 902.0
-margin_top = 934.0
-margin_right = 1400.0
-margin_bottom = 1054.0
+margin_left = 159.0
+margin_top = 370.0
+margin_right = 657.0
+margin_bottom = 490.0
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.929412, 0, 0.631373, 1 )
 text = "The game!"
