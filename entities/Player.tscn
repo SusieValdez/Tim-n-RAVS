@@ -229,6 +229,6 @@ anims/WallSlideRight = SubResource( 13 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 12
-frame = 36
+frame = 1
 
 [connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]

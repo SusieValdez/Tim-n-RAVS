@@ -65,10 +65,11 @@ texture = ExtResource( 2 )
 centered = false
 
 [node name="Label" type="Label" parent="."]
-margin_left = 454.0
-margin_top = 423.0
-margin_right = 1443.0
-margin_bottom = 603.998
+margin_left = 449.352
+margin_top = 417.367
+margin_right = 1438.36
+margin_bottom = 598.366
+rect_rotation = -3.93231
 custom_fonts/font = SubResource( 1 )
 text = "TiM n' R.A.V.S."
 __meta__ = {

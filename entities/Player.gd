@@ -1,3 +1,4 @@
+class_name Player
 extends KinematicBody2D
 
 const SPEED = 400
@@ -12,6 +13,9 @@ var velocity = Vector2(0,0)
 var can_jump = false
 var num_jumps = 0
 var direction = "Right"
+
+func _ready():
+	Globals.player = self
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("right"):

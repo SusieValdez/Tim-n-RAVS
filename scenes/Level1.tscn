@@ -101,7 +101,7 @@ position = Vector2( 719, -57 )
 position = Vector2( 975, -175 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 96, 325 )
+position = Vector2( 96, 332 )
 
-[node name="RAVS" parent="Player" instance=ExtResource( 8 )]
-position = Vector2( -24, -21 )
+[node name="RAVS" parent="." instance=ExtResource( 8 )]
+position = Vector2( 72, 312 )
