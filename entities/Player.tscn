@@ -195,6 +195,7 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -207,8 +208,12 @@ zoom = Vector2( 0.5, 0.5 )
 smoothing_enabled = true
 smoothing_speed = 10.0
 
-[node name="JumpTimer" type="Timer" parent="."]
+[node name="WalkOffPlatformCooldown" type="Timer" parent="."]
 wait_time = 0.08
+one_shot = true
+
+[node name="WasSlidingCooldown" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -231,4 +236,5 @@ hframes = 6
 vframes = 12
 frame = 1
 
-[connection signal="timeout" from="JumpTimer" to="." method="_on_JumpTimer_timeout"]
+[connection signal="timeout" from="WalkOffPlatformCooldown" to="." method="_on_WalkOffPlatformCoolDown_timeout"]
+[connection signal="timeout" from="WasSlidingCooldown" to="." method="_on_WasSlidingCooldown_timeout"]

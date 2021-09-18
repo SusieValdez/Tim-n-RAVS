@@ -4,44 +4,73 @@ extends KinematicBody2D
 const SPEED = 400
 const GRAVITY = 35
 const JUMPFORCE = -700
+const WALL_FRICTION = 0.5
+
+const LEFT = "Left"
+const RIGHT = "Right"
 
 onready var sprite = $Sprite
 
 const MAX_NUM_JUMPS = 2
 
 var velocity = Vector2(0,0)
-var can_jump = false
 var num_jumps = 0
-var direction = "Right"
+var direction = RIGHT
+var wall_jump_direction = null
+var was_recently_sliding = false
 
 func _ready():
 	Globals.player = self
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("right"):
-		direction = "Right"
+		direction = RIGHT
 		velocity.x = SPEED
 	elif Input.is_action_pressed("left"):
-		direction = "Left"
+		direction = LEFT
 		velocity.x = -SPEED
 	else:
 		velocity.x = 0
 
 	velocity.y = velocity.y + GRAVITY
+	
+	var is_wall_sliding = not is_on_floor() and is_on_wall()
+
+	if is_wall_sliding and velocity.y > 0 and direction != wall_jump_direction:
+		velocity.y *= WALL_FRICTION
 
 	if is_on_floor():
+		wall_jump_direction = null
 		num_jumps = 0
+	elif is_on_wall():
+		was_recently_sliding = true
+		$WasSlidingCooldown.start()
+		num_jumps = 1
+	# Can still jump for a bit after walking off platform: "Cyote Time"
 	if not is_on_floor() and num_jumps == 0:
-		$JumpTimer.start()
-	if num_jumps < MAX_NUM_JUMPS and Input.is_action_just_pressed("jump"):
-		velocity.y = JUMPFORCE
+		$WalkOffPlatformCooldown.start()
+	# Can only jump iff:
+	# - Jump button is pressed (duh)
+	# - We have an available jump slot
+	# - We're jumping on a different wall as last time
+	# - If we fall off the wall, we have to wait sometime before being allowed to jump again
+	if Input.is_action_just_pressed("jump") and num_jumps < MAX_NUM_JUMPS and direction != wall_jump_direction and (is_on_wall() or not was_recently_sliding):
 		num_jumps += 1
-		
+		velocity.y = JUMPFORCE
+		if is_wall_sliding:
+			wall_jump_direction = direction
+			if direction == RIGHT:
+				velocity.x = -SPEED
+			else:
+				velocity.x = SPEED
+
 	if is_on_floor():
 		if velocity.x == 0:
 			$AnimationPlayer.play("Idle" + direction)
 		else:
 			$AnimationPlayer.play("Run" + direction)
+	elif is_on_wall():
+		$AnimationPlayer.play("WallSlide" + direction)
 	else:
 		if num_jumps == 1:
 			$AnimationPlayer.play("Jump" + direction)
@@ -51,5 +80,8 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity, Vector2.UP)
 	velocity.x = lerp(velocity.x, 0, 0.2)
 
-func _on_JumpTimer_timeout():
+func _on_WalkOffPlatformCoolDown_timeout():
 	num_jumps += 1
+
+func _on_WasSlidingCooldown_timeout():
+	was_recently_sliding = false
