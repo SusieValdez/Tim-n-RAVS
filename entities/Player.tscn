@@ -229,7 +229,7 @@ wait_time = 0.15
 one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="."]
-wait_time = 4.0
+one_shot = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/DashLeft = SubResource( 2 )
@@ -249,7 +249,6 @@ anims/WallSlideRight = SubResource( 13 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 12
-frame = 66
 
 [connection signal="timeout" from="WalkOffPlatformCooldown" to="." method="_on_WalkOffPlatformCoolDown_timeout"]
 [connection signal="timeout" from="WasSlidingCooldown" to="." method="_on_WasSlidingCooldown_timeout"]

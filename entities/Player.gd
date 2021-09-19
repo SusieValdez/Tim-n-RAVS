@@ -6,6 +6,7 @@ const GRAVITY = 35
 const JUMPFORCE = -700
 const WALL_FRICTION = 0.5
 const DASH_SPEED = 400
+const DASH_COOLDOWN_SECS = 4
 
 const LEFT = "Left"
 const RIGHT = "Right"
@@ -20,12 +21,12 @@ var direction = RIGHT
 var wall_jump_direction = null
 var was_recently_sliding = false
 var speed_offset = 1
-var can_dash = true
+var num_secs_until_dash = 0
 var is_dashing = false
 
 func _ready():
 	Globals.player = self
-	
+
 func die():
 	get_tree().reload_current_scene()
 
@@ -48,9 +49,10 @@ func _physics_process(_delta):
 		else:
 			velocity.x += DASH_SPEED
 	
+	var can_dash = num_secs_until_dash == 0
 	if Input.is_action_just_pressed("dash") and can_dash:
 		is_dashing = true
-		can_dash = false
+		num_secs_until_dash = DASH_COOLDOWN_SECS - 1
 		$DashLifetime.start()
 		$DashCooldown.start()
 
@@ -114,4 +116,6 @@ func _on_DashLifetime_timeout():
 	is_dashing = false
 
 func _on_DashCooldown_timeout():
-	can_dash = true
+	if num_secs_until_dash > 1:
+		$DashCooldown.start()
+	num_secs_until_dash -= 1
