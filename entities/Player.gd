@@ -20,7 +20,7 @@ var num_jumps = 0
 var direction = RIGHT
 var wall_jump_direction = null
 var was_recently_sliding = false
-var speed_offset = 1
+var speed_offset = 0
 var num_secs_until_dash = 0
 var is_dashing = false
 
@@ -28,7 +28,7 @@ func _ready():
 	Globals.player = self
 
 func die():
-	get_tree().reload_current_scene()
+	return get_tree().reload_current_scene() == OK
 
 func set_speed_offset(offset):
 	speed_offset = offset
