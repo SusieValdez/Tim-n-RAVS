@@ -18,12 +18,16 @@ var num_jumps = 0
 var direction = RIGHT
 var wall_jump_direction = null
 var was_recently_sliding = false
+var speed_offset = 1
 
 func _ready():
 	Globals.player = self
 	
 func die():
 	get_tree().reload_current_scene()
+
+func set_speed_offset(offset):
+	speed_offset = offset
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("right"):
@@ -79,7 +83,8 @@ func _physics_process(_delta):
 			$AnimationPlayer.play("Jump" + direction)
 		elif num_jumps == 2:
 			$AnimationPlayer.play("Roll" + direction)
-
+			
+	velocity.x += speed_offset
 	velocity = move_and_slide(velocity, Vector2.UP)
 	velocity.x = lerp(velocity.x, 0, 0.2)
 
