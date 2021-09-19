@@ -21,6 +21,9 @@ var was_recently_sliding = false
 
 func _ready():
 	Globals.player = self
+	
+func die():
+	get_tree().reload_current_scene()
 
 func _physics_process(_delta):
 	if Input.is_action_pressed("right"):

@@ -71,20 +71,25 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Squasher" parent="." instance=ExtResource( 9 )]
-position = Vector2( 809, 320 )
+[node name="Squashers" type="Node2D" parent="."]
 
-[node name="Destination" type="Node2D" parent="Squasher"]
-position = Vector2( 0, -46 )
+[node name="Squasher" parent="Squashers" instance=ExtResource( 9 )]
+position = Vector2( 792.737, 288.019 )
 
-[node name="Squasher2" parent="." instance=ExtResource( 9 )]
-position = Vector2( 934, 274 )
+[node name="Squasher2" parent="Squashers" instance=ExtResource( 9 )]
+position = Vector2( 862.32, 288.019 )
+start_time = 1.5
 
-[node name="Destination" type="Node2D" parent="Squasher2"]
-position = Vector2( 0, 47 )
+[node name="Squasher3" parent="Squashers" instance=ExtResource( 9 )]
+position = Vector2( 932.578, 288.019 )
+start_time = 1.0
 
-[node name="Squasher3" parent="." instance=ExtResource( 9 )]
-position = Vector2( 1052, 320 )
+[node name="Squasher4" parent="Squashers" instance=ExtResource( 9 )]
+position = Vector2( 1001.94, 288.019 )
+start_time = 0.5
+
+[node name="Squasher5" parent="Squashers" instance=ExtResource( 9 )]
+position = Vector2( 1069.72, 287.794 )
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -118,7 +123,7 @@ position = Vector2( 719, -57 )
 position = Vector2( 975, -175 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 760, 329 )
+position = Vector2( 731.622, 329.71 )
 
 [node name="RAVS" parent="." instance=ExtResource( 8 )]
-position = Vector2( 711, 313 )
+position = Vector2( 682.622, 313.71 )
