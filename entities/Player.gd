@@ -5,6 +5,7 @@ const SPEED = 400
 const GRAVITY = 35
 const JUMPFORCE = -700
 const WALL_FRICTION = 0.5
+const DASH_SPEED = 400
 
 const LEFT = "Left"
 const RIGHT = "Right"
@@ -19,6 +20,8 @@ var direction = RIGHT
 var wall_jump_direction = null
 var was_recently_sliding = false
 var speed_offset = 1
+var can_dash = true
+var is_dashing = false
 
 func _ready():
 	Globals.player = self
@@ -30,14 +33,26 @@ func set_speed_offset(offset):
 	speed_offset = offset
 
 func _physics_process(_delta):
-	if Input.is_action_pressed("right"):
-		direction = RIGHT
-		velocity.x = SPEED
-	elif Input.is_action_pressed("left"):
-		direction = LEFT
-		velocity.x = -SPEED
+	if not is_dashing:
+		if Input.is_action_pressed("right"):
+			direction = RIGHT
+			velocity.x = SPEED
+		elif Input.is_action_pressed("left"):
+			direction = LEFT
+			velocity.x = -SPEED
+		else:
+			velocity.x = 0
 	else:
-		velocity.x = 0
+		if direction == LEFT:
+			velocity.x -= DASH_SPEED
+		else:
+			velocity.x += DASH_SPEED
+	
+	if Input.is_action_just_pressed("dash") and can_dash:
+		is_dashing = true
+		can_dash = false
+		$DashLifetime.start()
+		$DashCooldown.start()
 
 	velocity.y = velocity.y + GRAVITY
 	
@@ -71,7 +86,9 @@ func _physics_process(_delta):
 			else:
 				velocity.x = SPEED
 
-	if is_on_floor():
+	if is_dashing:
+		$AnimationPlayer.play("Dash" + direction)
+	elif is_on_floor():
 		if velocity.x == 0:
 			$AnimationPlayer.play("Idle" + direction)
 		else:
@@ -86,10 +103,15 @@ func _physics_process(_delta):
 			
 	velocity.x += speed_offset
 	velocity = move_and_slide(velocity, Vector2.UP)
-	velocity.x = lerp(velocity.x, 0, 0.2)
 
 func _on_WalkOffPlatformCoolDown_timeout():
 	num_jumps += 1
 
 func _on_WasSlidingCooldown_timeout():
 	was_recently_sliding = false
+
+func _on_DashLifetime_timeout():
+	is_dashing = false
+
+func _on_DashCooldown_timeout():
+	can_dash = true

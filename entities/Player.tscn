@@ -8,7 +8,8 @@ extents = Vector2( 10, 14.5645 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "DashLeft"
-length = 0.1
+length = 0.3
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -16,15 +17,16 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 66 ]
+"values": [ 66, 67, 68 ]
 }
 
 [sub_resource type="Animation" id=3]
 resource_name = "DashRight"
-length = 0.1
+length = 0.3
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -32,10 +34,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 60 ]
+"values": [ 60, 61, 62 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -72,6 +74,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=6]
 length = 0.1
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -87,6 +90,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=7]
 length = 0.1
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -103,6 +107,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=8]
 resource_name = "RollLeft"
 length = 0.5
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -119,6 +124,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=9]
 resource_name = "RollRight"
 length = 0.5
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -166,6 +172,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=12]
 length = 0.1
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -181,6 +188,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=13]
 length = 0.1
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -199,7 +207,7 @@ collision_mask = 15
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -1.1105, 1.49103 )
+position = Vector2( 0, 1.5 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -215,6 +223,13 @@ one_shot = true
 [node name="WasSlidingCooldown" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="DashLifetime" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+wait_time = 4.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/DashLeft = SubResource( 2 )
@@ -234,7 +249,9 @@ anims/WallSlideRight = SubResource( 13 )
 texture = ExtResource( 1 )
 hframes = 6
 vframes = 12
-frame = 1
+frame = 66
 
 [connection signal="timeout" from="WalkOffPlatformCooldown" to="." method="_on_WalkOffPlatformCoolDown_timeout"]
 [connection signal="timeout" from="WasSlidingCooldown" to="." method="_on_WasSlidingCooldown_timeout"]
+[connection signal="timeout" from="DashLifetime" to="." method="_on_DashLifetime_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]
