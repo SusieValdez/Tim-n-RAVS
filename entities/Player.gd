@@ -114,6 +114,7 @@ func _on_WasSlidingCooldown_timeout():
 
 func _on_DashLifetime_timeout():
 	is_dashing = false
+	is_dashing = false
 
 func _on_DashCooldown_timeout():
 	if num_secs_until_dash > 1:
