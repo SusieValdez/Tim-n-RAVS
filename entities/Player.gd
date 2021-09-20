@@ -28,7 +28,7 @@ func _ready():
 	Globals.player = self
 
 func die():
-	return get_tree().reload_current_scene() == OK
+	Globals.reset_level()
 
 func _physics_process(_delta):
 	if not is_dashing:
@@ -110,7 +110,6 @@ func _on_WasSlidingCooldown_timeout():
 	was_recently_sliding = false
 
 func _on_DashLifetime_timeout():
-	is_dashing = false
 	is_dashing = false
 
 func _on_DashCooldown_timeout():

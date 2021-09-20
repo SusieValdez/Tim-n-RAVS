@@ -164,7 +164,6 @@ format = 1
 
 [node name="LevelWarp" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, 640 )
-frame = 3
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 101, 112 )
