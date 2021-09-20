@@ -30,7 +30,6 @@ animations = [ {
 extents = Vector2( 64, 1 )
 
 [node name="ConveyorBelt" type="StaticBody2D"]
-position = Vector2( 1280, 384 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

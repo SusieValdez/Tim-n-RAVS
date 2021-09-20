@@ -30,9 +30,6 @@ func _ready():
 func die():
 	return get_tree().reload_current_scene() == OK
 
-func set_speed_offset(offset):
-	speed_offset = offset
-
 func _physics_process(_delta):
 	if not is_dashing:
 		if Input.is_action_pressed("right"):
@@ -103,7 +100,7 @@ func _physics_process(_delta):
 		elif num_jumps == 2:
 			$AnimationPlayer.play("Roll" + direction)
 			
-	velocity.x += speed_offset
+	velocity.x += clamp(speed_offset, -250, 250)
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 func _on_WalkOffPlatformCoolDown_timeout():

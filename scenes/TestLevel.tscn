@@ -116,14 +116,17 @@ position = Vector2( 1280, 287.761 )
 
 [node name="Cog" parent="Cogs" instance=ExtResource( 3 )]
 position = Vector2( -96, 320 )
+frame = 2
 
 [node name="Cog2" parent="Cogs" instance=ExtResource( 3 )]
 position = Vector2( -160, 320 )
+frame = 2
 flipped = true
 
 [node name="ConveyorBelts" type="Node2D" parent="."]
 
 [node name="ConveyorBelt" parent="ConveyorBelts" instance=ExtResource( 7 )]
+position = Vector2( 1280, 384 )
 
 [node name="Capsules" type="Node2D" parent="."]
 
@@ -149,6 +152,7 @@ tile_data = PoolIntArray( 196620, 1, 0, 196623, 2, 0, 393218, 1, 0, 393220, 0, 0
 
 [node name="LevelWarp" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1878, -167 )
+frame = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 121, 336 )
