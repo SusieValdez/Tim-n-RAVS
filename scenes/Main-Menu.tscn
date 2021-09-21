@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/Breakfast Noodles DEMO.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/main-menu.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Main-Menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/Button.png" type="Texture" id=4]
 [ext_resource path="res://assets/Minako-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/sounds/button_1.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 80
@@ -150,5 +151,15 @@ custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = SubResource( 10 )
 custom_fonts/font = SubResource( 11 )
 text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
+[node name="Sounds" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 6 )
+
+[connection signal="mouse_entered" from="PlayButton" to="." method="_on_Button_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="mouse_entered" from="OptionsButton" to="." method="_on_Button_mouse_entered"]

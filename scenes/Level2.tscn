@@ -107,13 +107,13 @@ start_time = 1.0
 position = Vector2( 2432, 32 )
 
 [node name="Squasher9" parent="Squashers" instance=ExtResource( 3 )]
-position = Vector2( 2304, 480 )
+position = Vector2( 2464, 480 )
 
 [node name="Squasher10" parent="Squashers" instance=ExtResource( 3 )]
-position = Vector2( 2048, 480 )
+position = Vector2( 2176, 480 )
 
 [node name="Squasher11" parent="Squashers" instance=ExtResource( 3 )]
-position = Vector2( 1920, 480 )
+position = Vector2( 1952, 480 )
 start_time = 1.0
 
 [node name="Squasher12" parent="Squashers" instance=ExtResource( 3 )]
@@ -164,6 +164,7 @@ format = 1
 
 [node name="LevelWarp" parent="." instance=ExtResource( 10 )]
 position = Vector2( 0, 640 )
+frame = 3
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 101, 112 )

@@ -7,4 +7,8 @@ func _physics_process(delta):
 
 func _on_Area2D_body_entered(body):
 	if body is Player:
-		Globals.next_level()
+		body.disableInput()
+		Globals.random_child($Sounds).play()
+
+func _on_TeleportAudio_finished():
+	Globals.next_level()

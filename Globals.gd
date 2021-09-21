@@ -3,10 +3,19 @@ extends Node
 var player: Player
 var _level = 0
 var _num_capsules_per_level = {}
+var _music: AudioStreamPlayer = AudioStreamPlayer.new()
+var _first_run = true
+
+func _ready():
+	add_child(_music)
+	_music.stream = preload("res://assets/sounds/music.mp3")
 
 func start_game():
 	_level = 0
 	_num_capsules_per_level = {}
+	if _first_run:
+		_music.play()
+		_first_run = false
 	load_level()
 
 func next_level():
@@ -33,3 +42,7 @@ func load_level(level=_level):
 	if get_tree().change_scene("res://scenes/Level" + str(level + 1) + ".tscn") != OK:
 		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/Main-Menu.tscn")
+
+func random_child(parent_node):
+	var random_id = randi() % parent_node.get_child_count()
+	return parent_node.get_child(random_id)

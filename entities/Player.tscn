@@ -1,7 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/player.png" type="Texture" id=1]
 [ext_resource path="res://entities/Player.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/death_2.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/sounds/death_1.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/sounds/double_jump_2.wav" type="AudioStream" id=6]
+[ext_resource path="res://assets/sounds/double_jump_1.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/sounds/jump_2.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/jump_1.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sounds/dash_2.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/sounds/dash_1.wav" type="AudioStream" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 13.5 )
@@ -250,7 +258,45 @@ texture = ExtResource( 1 )
 hframes = 6
 vframes = 12
 
+[node name="Sounds" type="Node" parent="."]
+
+[node name="Jump" type="Node" parent="Sounds"]
+
+[node name="Jump1" type="AudioStreamPlayer" parent="Sounds/Jump"]
+stream = ExtResource( 9 )
+
+[node name="Jump2" type="AudioStreamPlayer" parent="Sounds/Jump"]
+stream = ExtResource( 8 )
+
+[node name="DoubleJump" type="Node" parent="Sounds"]
+
+[node name="DoubleJump1" type="AudioStreamPlayer" parent="Sounds/DoubleJump"]
+stream = ExtResource( 7 )
+
+[node name="DoubleJump2" type="AudioStreamPlayer" parent="Sounds/DoubleJump"]
+stream = ExtResource( 6 )
+
+[node name="Death" type="Node" parent="Sounds"]
+
+[node name="Death1" type="AudioStreamPlayer" parent="Sounds/Death"]
+stream = ExtResource( 4 )
+volume_db = 14.0
+
+[node name="Death2" type="AudioStreamPlayer" parent="Sounds/Death"]
+stream = ExtResource( 3 )
+volume_db = 14.0
+
+[node name="Dash" type="Node" parent="Sounds"]
+
+[node name="Dash1" type="AudioStreamPlayer" parent="Sounds/Dash"]
+stream = ExtResource( 11 )
+
+[node name="Dash2" type="AudioStreamPlayer" parent="Sounds/Dash"]
+stream = ExtResource( 10 )
+
 [connection signal="timeout" from="WalkOffPlatformCooldown" to="." method="_on_WalkOffPlatformCoolDown_timeout"]
 [connection signal="timeout" from="WasSlidingCooldown" to="." method="_on_WasSlidingCooldown_timeout"]
 [connection signal="timeout" from="DashLifetime" to="." method="_on_DashLifetime_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_DashCooldown_timeout"]
+[connection signal="finished" from="Sounds/Death/Death1" to="." method="_on_DeathAudio_finished"]
+[connection signal="finished" from="Sounds/Death/Death2" to="." method="_on_DeathAudio_finished"]

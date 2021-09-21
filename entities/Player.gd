@@ -23,14 +23,13 @@ var was_recently_sliding = false
 var speed_offset = 0
 var num_secs_until_dash = 0
 var is_dashing = false
+var is_dying = false
 
 func _ready():
 	Globals.player = self
 
-func die():
-	Globals.reset_level()
-
 func _physics_process(_delta):
+	# Disable input while dashing
 	if not is_dashing:
 		if Input.is_action_pressed("right"):
 			direction = RIGHT
@@ -48,6 +47,7 @@ func _physics_process(_delta):
 	
 	var can_dash = num_secs_until_dash == 0
 	if Input.is_action_just_pressed("dash") and can_dash:
+		Globals.random_child($Sounds/Dash).play()
 		is_dashing = true
 		num_secs_until_dash = DASH_COOLDOWN_SECS - 1
 		$DashLifetime.start()
@@ -76,6 +76,10 @@ func _physics_process(_delta):
 	# - We're jumping on a different wall as last time
 	# - If we fall off the wall, we have to wait sometime before being allowed to jump again
 	if Input.is_action_just_pressed("jump") and num_jumps < MAX_NUM_JUMPS and direction != wall_jump_direction and (is_on_wall() or not was_recently_sliding):
+		if num_jumps == 0:
+			Globals.random_child($Sounds/Jump).play()
+		if num_jumps == 1:
+			Globals.random_child($Sounds/DoubleJump).play()
 		num_jumps += 1
 		velocity.y = JUMPFORCE
 		if is_wall_sliding:
@@ -102,6 +106,20 @@ func _physics_process(_delta):
 			
 	velocity.x += clamp(speed_offset, -250, 250)
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func disableInput():
+	$AnimationPlayer.play("Roll" + direction)
+	set_physics_process(false)
+
+func die():
+	# Prevent death sound being played again
+	if not is_dying:
+		disableInput()
+		Globals.random_child($Sounds/Death).play()
+		is_dying = true
+
+func _on_DeathAudio_finished():
+	Globals.reset_level()
 
 func _on_WalkOffPlatformCoolDown_timeout():
 	num_jumps += 1

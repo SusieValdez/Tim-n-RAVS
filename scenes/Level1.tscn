@@ -116,11 +116,12 @@ position = Vector2( 1888, -512 )
 [node name="Cog" parent="Cogs" instance=ExtResource( 3 )]
 modulate = Color( 0.984314, 0.415686, 0.415686, 1 )
 position = Vector2( 928, 97.0836 )
+frame = 2
 
 [node name="Cog2" parent="Cogs" instance=ExtResource( 3 )]
 modulate = Color( 0.984314, 0.415686, 0.415686, 1 )
 position = Vector2( 992, 97.0836 )
-frame = 2
+frame = 1
 flipped = true
 
 [node name="ConveyorBelts" type="Node2D" parent="."]
@@ -158,15 +159,9 @@ position = Vector2( 1632, -512 )
 
 [node name="LevelWarp" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2464, -448 )
-frame = 3
+frame = 1
 
-[node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 112, 96 )
-
-[node name="RAVS" parent="." instance=ExtResource( 13 )]
-position = Vector2( 80, 32 )
-
-[node name="Label" type="Label" parent="."]
+[node name="HowToDash" type="Label" parent="."]
 margin_left = 1344.0
 margin_top = -512.0
 margin_right = 1559.0
@@ -178,3 +173,9 @@ Works on ground and in the air!"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 128, 96 )
+
+[node name="RAVS" parent="." instance=ExtResource( 13 )]
+position = Vector2( 64, 64 )
