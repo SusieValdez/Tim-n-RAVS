@@ -97,55 +97,48 @@ position = Vector2( 2400, 456 )
 
 [node name="Cog" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 128, 1024 )
-frame = 2
 
 [node name="Cog3" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 320, 1024 )
-frame = 1
+frame = 2
 
 [node name="Cog5" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 512, 1024 )
-frame = 2
 
 [node name="Cog7" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 704, 1024 )
-frame = 2
 
 [node name="Cog9" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 896, 1024 )
-frame = 1
+frame = 2
 
 [node name="Cog11" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1088, 1024 )
-frame = 2
 
 [node name="Cog13" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1280, 1024 )
-frame = 1
+frame = 2
 
 [node name="Cog15" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1472, 1024 )
-frame = 2
 
 [node name="Cog17" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1664, 1024 )
-frame = 1
+frame = 2
 
 [node name="Cog19" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1856, 1024 )
-frame = 2
 
 [node name="Cog21" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2048, 1024 )
-frame = 2
 
 [node name="Cog23" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2240, 1024 )
-frame = 1
+frame = 2
 
 [node name="Cog25" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2432, 1024 )
-frame = 1
+frame = 2
 
 [node name="ConveyorBelts" type="Node2D" parent="."]
 
