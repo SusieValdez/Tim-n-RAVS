@@ -39,6 +39,7 @@ func _physics_process(_delta):
 			velocity.x = -SPEED
 		else:
 			velocity.x = 0
+		velocity.y = velocity.y + GRAVITY
 	else:
 		if direction == LEFT:
 			velocity.x -= DASH_SPEED
@@ -52,8 +53,6 @@ func _physics_process(_delta):
 		num_secs_until_dash = DASH_COOLDOWN_SECS - 1
 		$DashLifetime.start()
 		$DashCooldown.start()
-
-	velocity.y = velocity.y + GRAVITY
 	
 	var is_wall_sliding = not is_on_floor() and is_on_wall()
 
