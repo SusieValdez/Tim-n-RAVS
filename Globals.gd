@@ -41,7 +41,7 @@ func load_level(level=_level):
 	# warning-ignore:return_value_discarded
 	if get_tree().change_scene("res://scenes/Level" + str(level + 1) + ".tscn") != OK:
 		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/Main-Menu.tscn")
+		get_tree().change_scene("res://scenes/End-Scene.tscn")
 
 func random_child(parent_node):
 	var random_id = randi() % parent_node.get_child_count()

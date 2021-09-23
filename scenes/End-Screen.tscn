@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/Breakfast Noodles DEMO.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Minako-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/end-screen.png" type="Texture" id=3]
 [ext_resource path="res://assets/Button.png" type="Texture" id=4]
+[ext_resource path="res://scenes/End-Screen.gd" type="Script" id=5]
+[ext_resource path="res://assets/sounds/button_1.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -33,9 +35,10 @@ region_rect = Rect2( 0, 0, 200, 100 )
 size = 70
 font_data = ExtResource( 2 )
 
-[node name="Control" type="Control"]
+[node name="End-Screen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -57,6 +60,10 @@ __meta__ = {
 }
 
 [node name="Panel" type="Panel" parent="CurrentRun"]
+anchor_left = 0.0280374
+anchor_top = -0.147541
+anchor_right = 0.0280374
+anchor_bottom = -0.147541
 margin_left = -10.0
 margin_top = 66.0
 margin_right = 222.0
@@ -119,3 +126,14 @@ custom_styles/hover = SubResource( 4 )
 custom_styles/normal = SubResource( 5 )
 custom_fonts/font = SubResource( 6 )
 text = "Menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sounds" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource( 6 )
+
+[connection signal="mouse_entered" from="GoBackButton" to="." method="_on_GoBackButton_mouse_entered"]
+[connection signal="pressed" from="GoBackButton" to="." method="_on_GoBackButton_pressed"]
