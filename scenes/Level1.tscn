@@ -115,10 +115,10 @@ position = Vector2( 1888, -512 )
 
 [node name="Cog" parent="Cogs" instance=ExtResource( 3 )]
 position = Vector2( 928, 97.0836 )
-frame = 0
 
 [node name="Cog2" parent="Cogs" instance=ExtResource( 3 )]
 position = Vector2( 992, 97.0836 )
+frame = 1
 flipped = true
 
 [node name="ConveyorBelts" type="Node2D" parent="."]
@@ -156,7 +156,7 @@ position = Vector2( 1632, -512 )
 
 [node name="LevelWarp" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2464, -448 )
-frame = 1
+frame = 2
 
 [node name="HowToDash" type="Label" parent="."]
 margin_left = 1344.0
@@ -164,7 +164,7 @@ margin_top = -512.0
 margin_right = 1559.0
 margin_bottom = -455.0
 custom_fonts/font = SubResource( 2 )
-text = "Press 'm' to dash.
+text = "Press 'm', or left mouse click, to dash.
 
 Works on ground and in the air!"
 __meta__ = {

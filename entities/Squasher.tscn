@@ -31,7 +31,7 @@ __meta__ = {
 }
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite/Area2D"]
-polygon = PoolVector2Array( -15.121, -31.0009, 15.0516, -30.9312, 14.8077, 12.8294, 30.974, 30.9121, -30.7996, 30.912, -14.7378, 12.7597 )
+polygon = PoolVector2Array( -13, -32, 13, -32, 13, 13, 28, 30, -28, 30, -13, 13 )
 __meta__ = {
 "_edit_lock_": true
 }

@@ -137,14 +137,15 @@ start_time = 1.0
 
 [node name="Cog" parent="Cogs" instance=ExtResource( 7 )]
 position = Vector2( 544, 704 )
-frame = 1
+frame = 0
 
 [node name="Cog3" parent="Cogs" instance=ExtResource( 7 )]
 position = Vector2( 800, 384 )
+frame = 1
 
 [node name="Cog5" parent="Cogs" instance=ExtResource( 7 )]
 position = Vector2( 1056, 384 )
-frame = 2
+frame = 1
 
 [node name="ConveyorBelts" type="Node2D" parent="."]
 

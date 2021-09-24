@@ -37,6 +37,9 @@ func _ready():
 		$Camera2D.zoom = Vector2(0.6, 0.6)
 
 func _physics_process(_delta):
+	if Input.is_action_just_pressed("menu"):
+		# warning-ignore:return_value_discarded
+		get_tree().change_scene("res://scenes/Main-Menu.tscn")
 	# Disable input while dashing
 	if not is_dashing:
 		if Input.is_action_pressed("right"):
@@ -128,9 +131,10 @@ func die():
 		disableInput()
 		Globals.random_child($Sounds/Death).play()
 		is_dying = true
+	Globals.num_deaths += 1
 
 func _on_DeathAudio_finished():
-	Globals.reset_level()
+	Globals.load_level()
 
 func _on_WalkOffPlatformCoolDown_timeout():
 	num_jumps += 1
