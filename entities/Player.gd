@@ -1,8 +1,13 @@
 class_name Player
 extends KinematicBody2D
 
+export var floating = false
+
 const SPEED = 400
 const GRAVITY = 35
+const HOVER_FORCE = 25
+const MAX_FLOAT_SPEED = 800
+const MAX_FALL_SPEED = 800
 const JUMPFORCE = -700
 const WALL_FRICTION = 0.5
 const DASH_SPEED = 400
@@ -27,6 +32,9 @@ var is_dying = false
 
 func _ready():
 	Globals.player = self
+	if floating:
+		$Camera2D.smoothing_speed = 20
+		$Camera2D.zoom = Vector2(0.6, 0.6)
 
 func _physics_process(_delta):
 	# Disable input while dashing
@@ -39,7 +47,11 @@ func _physics_process(_delta):
 			velocity.x = -SPEED
 		else:
 			velocity.x = 0
-		velocity.y = velocity.y + GRAVITY
+		if floating:
+			velocity.y -= HOVER_FORCE
+		else:
+			velocity.y += GRAVITY
+		velocity.y = clamp(velocity.y, -MAX_FLOAT_SPEED, MAX_FALL_SPEED)
 	else:
 		if direction == LEFT:
 			velocity.x -= DASH_SPEED

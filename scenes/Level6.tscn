@@ -333,7 +333,6 @@ tile_data = PoolIntArray( 65544, 0, 0, 65550, 1, 0, 65561, 0, 0, 65568, 1, 0, 26
 
 [node name="LevelWarp" parent="." instance=ExtResource( 10 )]
 position = Vector2( 1536, 384 )
-frame = 0
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 96, 64 )

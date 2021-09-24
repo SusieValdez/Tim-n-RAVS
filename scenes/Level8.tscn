@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://entities/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/window-one.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/Walls/tileset_Walls.tres" type="TileSet" id=4]
 [ext_resource path="res://assets/bricks.png" type="Texture" id=5]
 [ext_resource path="res://entities/Cog.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/Capsule.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/LevelWarp.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/window-two.png" type="Texture" id=11]
 [ext_resource path="res://assets/window-three.png" type="Texture" id=12]
@@ -119,206 +120,219 @@ position = Vector2( 2816, 32 )
 
 [node name="Cog" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -640, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog2" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -576, 480 )
-frame = 1
 
 [node name="Cog3" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -512, 480 )
-frame = 1
 
 [node name="Cog4" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -448, 480 )
-frame = 1
 
 [node name="Cog5" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -384, 480 )
+frame = 0
 
 [node name="Cog6" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -320, 480 )
+frame = 0
 
 [node name="Cog7" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -256, 480 )
-frame = 1
 
 [node name="Cog8" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -192, 480 )
+frame = 0
 
 [node name="Cog9" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -128, 480 )
+frame = 0
 
 [node name="Cog10" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( -64, 480 )
+frame = 0
 
 [node name="Cog11" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 0, 480 )
+frame = 0
 
 [node name="Cog12" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 64, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog13" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 128, 480 )
-frame = 1
 
 [node name="Cog14" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 192, 480 )
+frame = 0
 
 [node name="Cog15" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 256, 480 )
+frame = 0
 
 [node name="Cog16" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 320, 480 )
+frame = 0
 
 [node name="Cog17" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 384, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog18" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 448, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog19" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 512, 480 )
+frame = 0
 
 [node name="Cog20" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 576, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog21" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 640, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog22" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 704, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog23" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 768, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog24" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 832, 480 )
-frame = 1
 
 [node name="Cog25" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 896, 480 )
-frame = 1
 
 [node name="Cog26" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 960, 480 )
+frame = 0
 
 [node name="Cog27" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1024, 480 )
+frame = 0
 
 [node name="Cog28" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1088, 480 )
+frame = 0
 
 [node name="Cog29" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1152, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog30" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1216, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog31" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1280, 480 )
+frame = 0
 
 [node name="Cog32" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1344, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog33" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1408, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog34" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1472, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog35" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1536, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog36" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1600, 480 )
-frame = 1
 
 [node name="Cog37" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1664, 480 )
+frame = 0
 
 [node name="Cog38" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1728, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog39" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1792, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog40" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1856, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog41" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1920, 480 )
-frame = 1
 
 [node name="Cog42" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 1984, 480 )
-frame = 1
 
 [node name="Cog43" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2048, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog44" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2112, 480 )
-frame = 1
 
 [node name="Cog45" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2176, 480 )
-frame = 1
 
 [node name="Cog46" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2240, 480 )
-frame = 1
 
 [node name="Cog47" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2304, 480 )
-frame = 1
 
 [node name="Cog48" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2368, 480 )
+frame = 0
 
 [node name="Cog49" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2432, 480 )
+frame = 0
 
 [node name="Cog50" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2496, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog51" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2560, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog52" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2624, 480 )
-frame = 2
+frame = 0
 
 [node name="Cog53" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2688, 480 )
-frame = 1
 
 [node name="Cog54" parent="Cogs" instance=ExtResource( 6 )]
 position = Vector2( 2752, 480 )
-frame = 1
 
 [node name="ConveyorBelts" type="Node2D" parent="."]
 
 [node name="Capsules" type="Node2D" parent="."]
+
+[node name="Capsule" parent="Capsules" instance=ExtResource( 7 )]
+position = Vector2( 128, -224 )
+
+[node name="Capsule2" parent="Capsules" instance=ExtResource( 7 )]
+position = Vector2( 448, 288 )
+
+[node name="Capsule3" parent="Capsules" instance=ExtResource( 7 )]
+position = Vector2( 1184, -128 )
+
+[node name="Capsule4" parent="Capsules" instance=ExtResource( 7 )]
+position = Vector2( 2528, -352 )
 
 [node name="Walls" type="TileMap" parent="."]
 tile_set = ExtResource( 4 )
@@ -335,10 +349,10 @@ tile_set = SubResource( 1 )
 cell_size = Vector2( 32, 32 )
 cell_custom_transform = Transform2D( 32, 0, 0, 32, 0, 0 )
 format = 1
+tile_data = PoolIntArray( -720879, 1, 0, -720875, 2, 0, -458751, 2, 0, -458747, 0, 0, -458672, 0, 0, -458668, 1, 0, -327613, 0, 0, -327609, 1, 0, -262112, 0, 0, -262108, 2, 0, -131085, 1, 0, -131081, 0, 0, 16, 0, 0, 65556, 2, 0, 65590, 0, 0, 65593, 0, 0, 393258, 1, 0, 393262, 2, 0, 589819, 2, 0, 589823, 2, 0, 589840, 1, 0 )
 
 [node name="LevelWarp" parent="." instance=ExtResource( 10 )]
 position = Vector2( 2816, 32 )
-frame = 3
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -704, 160 )
