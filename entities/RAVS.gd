@@ -3,11 +3,19 @@ extends KinematicBody2D
 
 onready var player = Globals.player
 
+export var is_evil = false
+
+const EVIL_SPEED = 250
+
 var start_face_frame = 10
 var time = 0
 var velocity = Vector2.ZERO
 var is_transforming = false
-var is_evil = false
+var is_frozen = false
+
+func _ready():
+	if is_evil:
+		turn_evil()
 
 func turn_normal():
 	is_transforming = true
@@ -23,8 +31,11 @@ func turn_evil():
 
 func _physics_process(delta):
 	time += delta
+	if is_frozen:
+		return
 	if is_evil:
-		pass
+		var direction = global_position.direction_to(player.global_position)
+		velocity = move_and_slide(direction * EVIL_SPEED)
 	else:
 		var direction = global_position.direction_to(player.global_position)
 		var distance = global_position.distance_to(player.global_position)
@@ -45,3 +56,7 @@ func _physics_process(delta):
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	is_transforming = false
+
+func _on_DeathZone_body_entered(body):
+	if is_evil and body is Player:
+		body.die()

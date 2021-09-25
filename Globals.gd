@@ -13,8 +13,9 @@ var _level_capsules = []
 var _level_times = []
 
 func _reset():
+	_is_playing = true
 	num_deaths = 0
-	_level = 0
+	_level = get_current_level()
 	_level_capsules = []
 	_level_times = [OS.get_ticks_msec()]
 	for x in NUM_LEVELS:
@@ -29,14 +30,17 @@ func _ready():
 	_reset()
 
 func start_game():
-	_is_playing = true
 	_reset()
 	load_level()
 
 func get_current_level():
 	var scene_filename = get_tree().current_scene.filename
+	print(scene_filename)
 	var id_match = level_id_regex.search(scene_filename)
-	return int(id_match.get_string()) - 1
+	if id_match:
+		return int(id_match.get_string()) - 1
+	else:
+		return 0
 
 func next_level(level=_level+1):
 	_level = level

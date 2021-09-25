@@ -29,6 +29,7 @@ var speed_offset = 0
 var num_secs_until_dash = 0
 var is_dashing = false
 var is_dying = false
+var is_frozen = false
 
 func _ready():
 	Globals.player = self
@@ -40,6 +41,8 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("menu"):
 		# warning-ignore:return_value_discarded
 		get_tree().change_scene("res://scenes/Main-Menu.tscn")
+	if is_frozen:
+		return
 	# Disable input while dashing
 	if not is_dashing:
 		if Input.is_action_pressed("right"):
@@ -123,7 +126,7 @@ func _physics_process(_delta):
 
 func disableInput():
 	$AnimationPlayer.play("Roll" + direction)
-	set_physics_process(false)
+	is_frozen = true
 
 func die():
 	# Prevent death sound being played again
@@ -134,8 +137,7 @@ func die():
 	Globals.num_deaths += 1
 
 func _on_DeathAudio_finished():
-	var level = Globals.get_current_level()
-	Globals.load_level(level)
+	Globals.load_level()
 
 func _on_WalkOffPlatformCoolDown_timeout():
 	num_jumps += 1

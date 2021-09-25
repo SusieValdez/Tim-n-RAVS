@@ -29,7 +29,7 @@ radius = 30.0
 [node name="Cog" type="AnimatedSprite"]
 modulate = Color( 0.984314, 0.415686, 0.415686, 1 )
 frames = SubResource( 4 )
-frame = 2
+frame = 1
 playing = true
 script = ExtResource( 2 )
 
