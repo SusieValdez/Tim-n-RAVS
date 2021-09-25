@@ -301,7 +301,7 @@ position = Vector2( 0, 384 )
 position = Vector2( 1088, 0 )
 
 [node name="Capsule3" parent="Capsules" instance=ExtResource( 7 )]
-position = Vector2( 1120, 320 )
+position = Vector2( 1120, 352 )
 
 [node name="Capsule4" parent="Capsules" instance=ExtResource( 7 )]
 position = Vector2( 1568, 224 )
@@ -328,7 +328,7 @@ position = Vector2( 1536, 384 )
 frame = 1
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 96, 64 )
+position = Vector2( 128, 64 )
 
 [node name="RAVS" parent="." instance=ExtResource( 13 )]
 position = Vector2( 64, 64 )
