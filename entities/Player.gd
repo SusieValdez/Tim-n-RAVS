@@ -134,7 +134,8 @@ func die():
 	Globals.num_deaths += 1
 
 func _on_DeathAudio_finished():
-	Globals.load_level()
+	var level = Globals.get_current_level()
+	Globals.load_level(level)
 
 func _on_WalkOffPlatformCoolDown_timeout():
 	num_jumps += 1
