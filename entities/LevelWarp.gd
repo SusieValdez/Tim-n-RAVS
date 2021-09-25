@@ -1,6 +1,6 @@
 extends AnimatedSprite
 
-const ROTATION_SPEED = 5
+const ROTATION_SPEED = 1
 
 func _physics_process(delta):
 	rotation += delta * ROTATION_SPEED
