@@ -41,7 +41,7 @@ func load_level(level=_level):
 		_is_playing = false
 		return get_tree().change_scene("res://scenes/End-Screen.tscn")
 	_level_capsules[level] = 0
-	return get_tree().change_scene("res://scenes/Level" + str(level + 1) + ".tscn")
+	return get_tree().change_scene("res://scenes/levels/Level" + str(level + 1) + ".tscn")
 
 func add_capsule(level=_level):
 	_level_capsules[level] += 1
