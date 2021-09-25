@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Breakfast Noodles DEMO.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/Minako-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/end-screen.png" type="Texture" id=3]
-[ext_resource path="res://assets/Button.png" type="Texture" id=4]
+[ext_resource path="res://ui/Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/End-Screen.gd" type="Script" id=5]
-[ext_resource path="res://assets/sounds/button_1.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -20,19 +19,6 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="DynamicFont" id=3]
 size = 48
-font_data = ExtResource( 2 )
-
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 200, 100 )
-modulate_color = Color( 0.65098, 0.282353, 0.0313726, 1 )
-
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 4 )
-region_rect = Rect2( 0, 0, 200, 100 )
-
-[sub_resource type="DynamicFont" id=6]
-size = 70
 font_data = ExtResource( 2 )
 
 [node name="End-Screen" type="Control"]
@@ -99,23 +85,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="GoBackButton" type="Button" parent="."]
-margin_left = 1624.0
+[node name="GoBackButton" parent="." instance=ExtResource( 4 )]
+margin_left = 1592.0
 margin_top = 912.0
-margin_right = 1850.0
-margin_bottom = 1018.0
-custom_styles/hover = SubResource( 4 )
-custom_styles/normal = SubResource( 5 )
-custom_fonts/font = SubResource( 6 )
+margin_right = 1859.0
+margin_bottom = 1025.0
 text = "Menu"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Sounds" type="Node" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource( 6 )
-
-[connection signal="mouse_entered" from="GoBackButton" to="." method="_on_GoBackButton_mouse_entered"]
 [connection signal="pressed" from="GoBackButton" to="." method="_on_GoBackButton_pressed"]

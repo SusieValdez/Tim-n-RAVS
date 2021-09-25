@@ -115,10 +115,10 @@ position = Vector2( 1888, -512 )
 
 [node name="Cog" parent="Cogs" instance=ExtResource( 3 )]
 position = Vector2( 928, 97.0836 )
+frame = 0
 
 [node name="Cog2" parent="Cogs" instance=ExtResource( 3 )]
 position = Vector2( 992, 97.0836 )
-frame = 1
 flipped = true
 
 [node name="ConveyorBelts" type="Node2D" parent="."]

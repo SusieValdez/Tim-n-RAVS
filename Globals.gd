@@ -1,49 +1,56 @@
 extends Node
 
-var player: Player
-var num_deaths = 0
+const NUM_LEVELS = 10
 
-var _is_playing = false
-var _level = 0
+var player: Player
 var _music: AudioStreamPlayer = AudioStreamPlayer.new()
-var _first_run = true
-var _level_times = []
+var _is_playing = false
+
+var num_deaths = 0
+var _level = 0
 var _level_capsules = []
+var _level_times = []
+
+func _reset():
+	num_deaths = 0
+	_level = 0
+	_level_capsules = []
+	_level_times = [OS.get_ticks_msec()]
+	for x in NUM_LEVELS:
+		_level_capsules.append(0)
+		_level_times.append(0)
 
 func _ready():
 	add_child(_music)
 	_music.stream = preload("res://assets/sounds/music.mp3")
+	_music.play()
+	_reset()
 
 func start_game():
-	num_deaths = 0
 	_is_playing = true
-	_level = 0
-	if _first_run:
-		_music.play()
-		_first_run = false
-	_level_times = [OS.get_ticks_msec()]
-	_level_capsules = [0]
+	_reset()
 	load_level()
 
-func next_level():
-	_level += 1
-	var time_now = OS.get_ticks_msec()
-	_level_times.append(time_now)
-	_level_capsules.append(0)
-	load_level()
+func next_level(level=_level+1):
+	_level = level
+	_level_times[level] = OS.get_ticks_msec()
+	load_level(level)
 
 func load_level(level=_level):
+	if level == NUM_LEVELS:
+		_is_playing = false
+		return get_tree().change_scene("res://scenes/End-Screen.tscn")
 	_level_capsules[level] = 0
-	# warning-ignore:return_value_discarded
-	if get_tree().change_scene("res://scenes/Level" + str(level + 1) + ".tscn") != OK:
-		# warning-ignore:return_value_discarded
-		get_tree().change_scene("res://scenes/End-Screen.tscn")
+	return get_tree().change_scene("res://scenes/Level" + str(level + 1) + ".tscn")
 
 func add_capsule(level=_level):
 	_level_capsules[level] += 1
 
 func get_num_capsules(level=_level):
 	return _level_capsules[level]
+
+func is_playing():
+	return _is_playing
 
 func random_child(parent_node):
 	var random_id = randi() % parent_node.get_child_count()
@@ -56,7 +63,6 @@ func millis_to_str(elapsed):
 	var seconds = secs % 60
 	var millis = elapsed % 1000
 	return "%02d:%02d:%02d.%03d" % [hours, minutes, seconds, millis]
-
 
 func get_splits():
 	var splits = []
