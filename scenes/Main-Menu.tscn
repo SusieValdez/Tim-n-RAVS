@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Breakfast Noodles DEMO.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/main-menu.png" type="Texture" id=2]
@@ -17,8 +17,13 @@ outline_size = 5
 outline_color = Color( 0.223529, 0.0117647, 0.345098, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=3]
-resource_name = "TitleDance"
+[sub_resource type="DynamicFont" id=3]
+size = 60
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
 length = 4.0
 loop = true
 tracks/0/type = "bezier"
@@ -31,6 +36,10 @@ tracks/0/keys = {
 "points": PoolRealArray( 704, -0.25, 0, 0.25, 0, 768, -0.25, 0, 0.25, 0, 704, -0.25, 0, 0.25, 0 ),
 "times": PoolRealArray( 0, 2, 4 )
 }
+
+[sub_resource type="DynamicFont" id=5]
+size = 40
+font_data = ExtResource( 1 )
 
 [node name="Main-Menu" type="Control"]
 anchor_right = 1.0
@@ -67,9 +76,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="IPAddress" type="Label" parent="."]
+margin_left = 1344.0
+margin_top = 992.0
+margin_right = 1877.0
+margin_bottom = 1088.0
+custom_fonts/font = SubResource( 3 )
+text = "127.0.0.1"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 playback_default_blend_time = 1.0
-anims/TitleDance = SubResource( 3 )
+anims/TitleDance = SubResource( 4 )
 
 [node name="PlayButton" parent="." instance=ExtResource( 7 )]
 margin_left = 1248.0
@@ -77,6 +98,13 @@ margin_top = 256.0
 margin_right = 1515.0
 margin_bottom = 369.0
 text = "Play"
+
+[node name="JoinButton" parent="." instance=ExtResource( 7 )]
+margin_left = 1536.0
+margin_top = 256.0
+margin_right = 1803.0
+margin_bottom = 369.0
+text = "Join"
 
 [node name="OptionsButton" parent="." instance=ExtResource( 7 )]
 margin_left = 1248.0
@@ -92,5 +120,18 @@ margin_right = 1515.0
 margin_bottom = 689.0
 text = "Quit"
 
+[node name="ServerIP" type="LineEdit" parent="."]
+margin_left = 1536.0
+margin_top = 128.0
+margin_right = 1888.0
+margin_bottom = 224.0
+custom_fonts/font = SubResource( 5 )
+placeholder_text = "Enter IP Address"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="JoinButton" to="." method="_on_JoinButton_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_QuitButton_pressed"]
+[connection signal="text_changed" from="ServerIP" to="." method="_on_ServerIP_text_changed"]

@@ -27,7 +27,6 @@ func _ready():
 	add_child(_music)
 	_music.stream = preload("res://assets/sounds/music.mp3")
 	_music.play()
-	_reset()
 
 func start_game():
 	_reset()
